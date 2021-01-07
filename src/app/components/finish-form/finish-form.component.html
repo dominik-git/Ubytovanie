@@ -1,0 +1,230 @@
+<!--<form [formGroup]="form" class="example-form" class="mt-4">-->
+<!--    <mat-card-content>-->
+<!--        <div class="form-row align-items-center">-->
+<!--            <mat-label translate="DISTANCE" class="col-6"></mat-label>-->
+<!--            <mat-form-field>-->
+<!--                <input-->
+<!--                    matInput-->
+<!--                    placeholder="50"-->
+<!--                    [formControl]="controls.distance"-->
+<!--                    value="{{ controls.distance.value }}"-->
+<!--                    disabled-->
+<!--                />-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+
+<!--        <div class="form-row align-items-center">-->
+<!--            <mat-label translate="COUNT_OF_STOPS" class="col-6"></mat-label>-->
+<!--            <mat-form-field>-->
+<!--                <input-->
+<!--                    matInput-->
+<!--                    placeholder="0"-->
+<!--                    [formControl]="controls.numberOfStops"-->
+<!--                    value="{{ controls.numberOfStops.value }}"-->
+<!--                    disabled-->
+<!--                />-->
+<!--            </mat-form-field>-->
+<!--        </div>-->
+
+<!--&lt;!&ndash;        <div class="form-row align-items-center" *ngIf="controls.orphan.get('selected').value">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-label translate="ORPHAN" class="col-6"></mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-checkbox&ndash;&gt;-->
+<!--&lt;!&ndash;                id="orphan"&ndash;&gt;-->
+<!--&lt;!&ndash;                color="primary"&ndash;&gt;-->
+<!--&lt;!&ndash;                [checked]="controls.orphan.get('selected').value"&ndash;&gt;-->
+<!--&lt;!&ndash;                disabled&ndash;&gt;-->
+<!--&lt;!&ndash;            ></mat-checkbox>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                {{ controls.orphan.get('value').value }}&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-row" *ngIf="controls.orphan.get('selected').value">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-6"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div *ngFor="let item of form.get('orphanAttachments')?.controls; let i = index">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div (click)="download('orphanAttachments', i)">&ndash;&gt;-->
+<!--&lt;!&ndash;                    {{ item.value?._fileNames }}&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        &lt;!&ndash; <HALP ORPHAN>&ndash;&gt;-->
+<!--        <div class="form-row align-items-center" *ngIf="controls.halfOrphan.get('selected').value">-->
+<!--            <mat-label translate="HALF_ORPHAN" class="col-6"></mat-label>-->
+<!--            <mat-checkbox-->
+<!--                id="halfOrphan"-->
+<!--                color="primary"-->
+<!--                [checked]="controls.halfOrphan.get('selected').value"-->
+<!--                disabled-->
+<!--            ></mat-checkbox>-->
+<!--            <div>-->
+<!--                {{ controls.halfOrphan.get('value').value }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-row" *ngIf="controls.halfOrphan.get('selected').value">-->
+<!--            <div class="col-6">-->
+<!--                <div *ngFor="let item of form.get('halfOrphanAttachments')?.controls; let i = index">-->
+<!--                    <div (click)="download('halfOrphanAttachments', i)">-->
+<!--                        {{ item.value?._fileNames }}-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; </HALP ORPHAN>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;    <SIR_MEMBERSHIP>  &ndash;&gt;-->
+<!--        <div class="form-row align-items-center" *ngIf="controls.membershipInSir.get('selected').value">-->
+<!--            <mat-label translate="SIR_MEMBERSHIP" class="col-6"></mat-label>-->
+<!--            <mat-checkbox-->
+<!--                id="sir_membership"-->
+<!--                color="primary"-->
+<!--                [checked]="controls.membershipInSir.get('selected').value"-->
+<!--                disabled-->
+<!--            ></mat-checkbox>-->
+<!--            <div>-->
+<!--                {{ controls.membershipInSir.get('value').value }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-row" *ngIf="controls.membershipInSir.get('selected').value">-->
+<!--            <div class="col-6"></div>-->
+<!--            <div *ngFor="let item of form.get('membershipInSirAttachments')?.controls; let i = index">-->
+<!--                <div (click)="download('membershipInSirAttachments', i)">-->
+<!--                    {{ item.value?._fileNames }}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;    </SIR_MEMBERSHIP>  &ndash;&gt;-->
+
+<!--        &lt;!&ndash;   AS_MEMBERSHIP  &ndash;&gt;-->
+<!--        <div class="form-row align-items-center" *ngIf="controls.membershipInAs.get('selected').value">-->
+<!--            <mat-label translate="AS_MEMBERSHIP" class="col-6"></mat-label>-->
+<!--            <mat-checkbox-->
+<!--                id="as_membership"-->
+<!--                color="primary"-->
+<!--                [checked]="controls.membershipInAs.get('selected').value"-->
+<!--                disabled="true"-->
+<!--            ></mat-checkbox>-->
+<!--            <div *ngIf="controls.membershipInAs.get('selected').value">-->
+<!--                {{ controls.membershipInAs.get('value').value }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-row" *ngIf="controls.membershipInAs.get('selected').value">-->
+<!--            <div class="col-6"></div>-->
+<!--            <div *ngFor="let item of form.get('membershipInAsAttachments')?.controls; let i = index">-->
+<!--                <div (click)="download('membershipInAsAttachments', i)">-->
+<!--                    {{ item.value?._fileNames }}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;   </AS_MEMBERSHIP>  &ndash;&gt;-->
+
+<!--        &lt;!&ndash;      UPJS ACTIVITIES&ndash;&gt;-->
+<!--        <div class="form-row align-items-center" *ngIf="controls.upjsActivities.get('selected').value">-->
+<!--            <mat-label translate="UPJS_ACTIVITIES" class="col-6"></mat-label>-->
+<!--            <mat-checkbox-->
+<!--                id="UPJS_ACTIVITIES"-->
+<!--                color="primary"-->
+<!--                [checked]="controls.upjsActivities.get('selected').value"-->
+<!--                disabled="true"-->
+<!--            ></mat-checkbox>-->
+<!--            <div>-->
+<!--                {{ controls.upjsActivities.get('value').value }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;      </UPJS ACTITIVITES>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;  STUDY_AVERAGE    &ndash;&gt;-->
+<!--        <div class="form-row align-items-center" *ngIf="controls.studyAverage.get('selected').value">-->
+<!--            <mat-label translate="STUDY_AVERAGE" class="col-6"></mat-label>-->
+<!--            <mat-checkbox-->
+<!--                id="STUDY_AVERAGE"-->
+<!--                color="primary"-->
+<!--                [checked]="controls.upjsActivities.get('selected').value"-->
+<!--                disabled="true"-->
+<!--            ></mat-checkbox>-->
+<!--            <div>-->
+<!--                {{ controls.studyAverage.get('value').value }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;  </STUDY_AVERAGE?    &ndash;&gt;-->
+
+<!--        &lt;!&ndash;BREAK_RULES&ndash;&gt;-->
+<!--        <div class="form-row align-items-center" *ngIf="controls.breachOfOrder.get('selected').value">-->
+<!--            <mat-label translate="BREAK_RULES" class="col-6"></mat-label>-->
+<!--            <mat-checkbox-->
+<!--                id="BREAK_RULES"-->
+<!--                color="primary"-->
+<!--                [checked]="controls.breachOfOrder.get('selected').value"-->
+<!--                disabled-->
+<!--            ></mat-checkbox>-->
+<!--            <div>-->
+<!--                {{ controls.breachOfOrder.get('value').value }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;  </BREAK_RULES> -&ndash;&gt;-->
+
+<!--        &lt;!&ndash;      <ZTP> &ndash;&gt;-->
+<!--        <div class="form-row align-items-center" *ngIf="controls.ztp.get('selected').value">-->
+<!--            <mat-label translate="ZTP" class="col-6"></mat-label>-->
+<!--            <mat-checkbox-->
+<!--                id="ztp"-->
+<!--                color="primary"-->
+<!--                [checked]="controls.ztp.get('selected').value"-->
+<!--                disabled-->
+<!--            ></mat-checkbox>-->
+<!--            <div>-->
+<!--                {{ controls.ztp.get('value').value }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-row" *ngIf="controls.ztp.get('selected').value">-->
+<!--            <div class="col-6"></div>-->
+<!--            <div *ngFor="let item of form.get('ztpAttachments')?.controls; let i = index">-->
+<!--                <div (click)="download('ztpAttachments', i)">-->
+<!--                    {{ item.value?._fileNames }}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;     </ZTP> &ndash;&gt;-->
+<!--        <div>-->
+<!--            {{ controls.totalPoints.value }}-->
+<!--        </div>-->
+<!--        <div class="row justify-content-between">-->
+<!--            <button mat-raised-button matStepperPrevious color="warn" type="button" translate="BACK_BUTTON"></button>-->
+<!--            <button-->
+<!--                mat-raised-button-->
+<!--                matStepperNext-->
+<!--                color="primary"-->
+<!--                type="button"-->
+<!--                translate="SAVE_BUTTON"-->
+<!--                (click)="submit()"-->
+<!--            ></button>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;    <div>total points: {{totalPoints}}</div>&ndash;&gt;-->
+<!--    </mat-card-content>-->
+<!--</form>-->
+
+<form [formGroup]="form" class="example-form" class="mt-4">
+    <mat-card-content>
+        <div *ngIf="formData.orphan.value">
+            <div class="form-row">
+                <mat-label translate="DISTANCE" class="col-6"></mat-label>
+                <div>
+                    <mat-radio-button [checked]="formData.orphan.value" class="mr-3" disabled>Yes</mat-radio-button>
+                    <mat-radio-button [checked]="!formData.orphan.value" disabled>No</mat-radio-button>
+                    <span class="col-1 mb-2">50</span>
+                </div>
+            </div>
+            <div  class="form-row">
+                <div class="col-6"></div>
+                <div *ngFor="let item of formData.orphan.attachments; let i = index">
+                    <div (click)="download('membershipInSirAttachments', i)">
+                        {{ item?._fileNames }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</form>
+
+<div></div>

@@ -1,0 +1,57 @@
+
+<form [formGroup]="form" class="mt-4">
+    <div class="form-row">
+        <span translate="FULL_NAME" class="col-2"></span>
+        <span> {{getFullName()}} </span>
+    </div>
+
+    <div class="form-row">
+        <span translate="GENDER" class="col-2"></span>
+        <span> {{personalData?.gender}} </span>
+    </div>
+
+    <div class="form-row">
+        <span translate="ADDRESS" class="col-2"></span>
+        <span> {{personalData?.address}} </span>
+    </div>
+
+    <div class="form-row">
+        <span translate="NATIONALITY" class="col-2"></span>
+        <span>{{personalData?.nationality}} </span>
+    </div>
+
+    <div class="form-row">
+        <span translate="FACULTY" class="col-2"></span>
+        <span> {{personalData?.faculty}}</span>
+    </div>
+
+    <div class="form-row">
+        <span translate="STUDY_PROGRAMME" class="col-2"></span>
+        <span> {{personalData?.studyProgramme}} </span>
+    </div>
+
+    <div class="form-row">
+        <span translate="YEAR_OF_STUDY" class="col-2"></span>
+        <span> {{personalData?.yearOfStudy}} </span>
+    </div>
+
+    <div class="form-row">
+        <span translate="TYPE_OF_STUDY" class="col-2"></span>
+        <span> {{personalData?.typeOfStudy}} </span>
+    </div>
+
+    <div class="form-row">
+        <span translate="STUDY_FORM" class="col-2"></span>
+        <span> {{personalData?.studyForm}}</span>
+    </div>
+    <div class="form-row align-items-center">
+      <input type="checkbox" class="mr-2" [formControl]="form.get('confirmBox')"> <span translate="PERSONAL_FORM_CHECKBOX"></span>
+    </div>
+
+  <div class="row justify-content-between" >
+    <button mat-raised-button matStepperNext color="primary" type="button" translate="NEXT_BUTTON"></button>
+  </div>
+
+</form>
+
+

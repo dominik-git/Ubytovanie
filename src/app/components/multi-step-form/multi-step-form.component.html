@@ -1,0 +1,61 @@
+<!--<div class="m-2">-->
+<!--    <h1 class="form-heading">{{ stepItems[activeStepIndex].label }}</h1>-->
+
+<!--    <app-personal-info-form-->
+<!--        [form]="masterForm[0]"-->
+<!--        [personalData]="personalData"-->
+<!--        *ngIf="activeStepIndex === 0"-->
+<!--    ></app-personal-info-form>-->
+<!--    <app-accommodation-form [form]="masterForm[1]" [dormitories]="dormitories" *ngIf="activeStepIndex === 1">-->
+<!--    </app-accommodation-form>-->
+<!--    <app-points-form [form]="masterForm[2]" *ngIf="activeStepIndex === 2"></app-points-form>-->
+<!--    <div class="button-container">-->
+<!--        <button mat-raised-button color="warn" type="button" [disabled]="!activeStepIndex" (click)="goToStep('prev')">-->
+<!--            Previous-->
+<!--        </button>-->
+<!--        <button-->
+<!--            mat-raised-button-->
+<!--            color="primary"-->
+<!--            type="button"-->
+<!--            [disabled]="activeStepIndex === stepItems.length - 1 || masterForm[activeStepIndex].invalid"-->
+<!--            (click)="goToStep('next')"-->
+<!--        >-->
+<!--            Next-->
+<!--        </button>-->
+
+<!--        <button type="button" (click)="submit()" mat-raised-button color="accent">Submit</button>-->
+<!--    -->
+<!--    </div>-->
+<!--</div>-->
+
+<mat-horizontal-stepper [linear]="true" #stepper (selectionChange)="onStepChange($event)">
+    <mat-step [stepControl]="masterForm[0]" state="personal">
+        <ng-template matStepLabel>
+            <div translate="STEP_1_TITLE"></div>
+        </ng-template>
+        <app-personal-info-form [form]="masterForm[0]" [personalData]="personalData"></app-personal-info-form>
+    </mat-step>
+
+    <mat-step [stepControl]="masterForm[1]" state="home">
+
+        <ng-template matStepLabel>
+            <div translate="STEP_2_TITLE"></div>
+        </ng-template>
+        <app-accommodation-form [form]="masterForm[1]" [dormitories]="dormitories" ></app-accommodation-form>
+    </mat-step>
+
+    <mat-step [stepControl]="masterForm[2]" state="collections">
+        <ng-template matStepLabel>
+            <div translate="STEP_3_TITLE"></div>
+        </ng-template>
+        <app-points-form [form]="masterForm[2]" (newItemEvent)="onLastStepChange($event)"></app-points-form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="masterForm[2]" state="save">
+        <ng-template matStepLabel>
+            <div translate="STEP_4_TITLE"></div>
+        </ng-template>
+        <app-finish-form [form]="masterForm[2]" [masterForm]="masterForm"  *ngIf="activeStepIndex == 3" ></app-finish-form>
+    </mat-step>
+</mat-horizontal-stepper>

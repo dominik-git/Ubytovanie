@@ -1,0 +1,173 @@
+<form [formGroup]="form" class="example-form" class="mt-4">
+    <mat-card-content>
+        <div class="form-row align-items-center mb-3">
+            <mat-label translate="DISTANCE" class="col-6"></mat-label>
+            <mat-form-field class="col-2">
+                <input matInput [formControl]="controls.distance" value="50" readonly />
+            </mat-form-field>
+        </div>
+
+        <div class="form-row align-items-center mb-3">
+            <mat-label translate="COUNT_OF_STOPS" class="col-6"></mat-label>
+            <mat-form-field class="col-2">
+                <input matInput [formControl]="controls.numberOfStops" readonly />
+            </mat-form-field>
+        </div>
+
+        <div class="form-row mb-3" formGroupName="orphan">
+            <mat-label translate="ORPHAN" class="col-6"></mat-label>
+            <div class="col-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <mat-radio-group formControlName="value" (change)="onCheckboxChange($event)" name="orphan">
+                        <mat-radio-button [value]="true" class="mr-3">Yes</mat-radio-button>
+                        <mat-radio-button [value]="false">No</mat-radio-button>
+                    </mat-radio-group>
+                    <span class="col-1 mb-2" *ngIf="isRadioSelected('orphan')">50</span>
+                </div>
+                <app-attachement
+                    [group]="controls.orphan.get('attachments')"
+                    *ngIf="isRadioSelected('orphan')"
+                ></app-attachement>
+            </div>
+        </div>
+
+        <!-- <HALP ORPHAN>-->
+        <div class="form-row mb-3" formGroupName="halfOrphan">
+            <mat-label translate="HALF_ORPHAN" class="col-6"></mat-label>
+            <div>
+                <mat-radio-group formControlName="value" (change)="onCheckboxChange($event)" name="halfOrphan">
+                    <mat-radio-button [value]="true" class="mr-3">Yes</mat-radio-button>
+                    <mat-radio-button [value]="false">No</mat-radio-button>
+                </mat-radio-group>
+                <span class="col-1 mb-2" *ngIf="isRadioSelected('halfOrphan')">50</span>
+                <app-attachement
+                    [group]="controls.halfOrphan.get('attachments')"
+                    *ngIf="isRadioSelected('halfOrphan')"
+                ></app-attachement>
+            </div>
+        </div>
+        <!-- </HALP ORPHAN>-->
+
+        <!--    <SIR_MEMBERSHIP>  -->
+        <div class="form-row mb-3" formGroupName="membershipInSir">
+            <mat-label translate="SIR_MEMBERSHIP" class="col-6"></mat-label>
+            <div>
+                <div>
+                    <mat-radio-group formControlName="value" (change)="onCheckboxChange($event)" name="membershipInSir">
+                        <mat-radio-button [value]="true" class="mr-3">Yes</mat-radio-button>
+                        <mat-radio-button [value]="false">No</mat-radio-button>
+                    </mat-radio-group>
+                    <span class="col-1 mb-2" *ngIf="isRadioSelected('membershipInSir')">50</span>
+                </div>
+
+                <app-attachement
+                    [group]="controls.membershipInSir.get('attachments')"
+                    *ngIf="isRadioSelected('membershipInSir')"
+                ></app-attachement>
+            </div>
+        </div>
+        <!--    </SIR_MEMBERSHIP>  -->
+
+        <!--   AS_MEMBERSHIP  -->
+        <div class="form-row mb-3" formGroupName="membershipInAs">
+            <mat-label translate="AS_MEMBERSHIP" class="col-6"></mat-label>
+            <div>
+                <div>
+                    <mat-radio-group formControlName="value" (change)="onCheckboxChange($event)" name="membershipInAs">
+                        <mat-radio-button [value]="true" class="mr-3">Yes</mat-radio-button>
+                        <mat-radio-button [value]="false">No</mat-radio-button>
+                    </mat-radio-group>
+                    <span class="col-1 mb-2" *ngIf="isRadioSelected('halfOrphan')">50</span>
+                </div>
+                <app-attachement
+                    [group]="controls.membershipInAs.get('attachments')"
+                    *ngIf="isRadioSelected('membershipInAs')"
+                ></app-attachement>
+            </div>
+        </div>
+        <!--   </AS_MEMBERSHIP>  -->
+
+        <!--      UPJS ACTIVITIES-->
+        <div class="form-row mb-3" formGroupName="upjsActivities">
+            <mat-label translate="UPJS_ACTIVITIES" class="col-6"></mat-label>
+            <div>
+                <div>
+                    <mat-radio-group formControlName="value" (change)="onCheckboxChange($event)" name="upjsActivities">
+                        <mat-radio-button [value]="true" class="mr-3">Yes</mat-radio-button>
+                        <mat-radio-button [value]="false">No</mat-radio-button>
+                    </mat-radio-group>
+                    <span class="col-1 mb-2" *ngIf="isRadioSelected('upjsActivities')">50</span>
+                </div>
+                <app-attachement
+                    [group]="controls.upjsActivities.get('attachments')"
+                    *ngIf="isRadioSelected('upjsActivities')"
+                ></app-attachement>
+            </div>
+        </div>
+        <!--      </UPJS ACTITIVITES>-->
+
+        <!--  STUDY_AVERAGE    -->
+        <div class="form-row mb-3" formGroupName="studyAverage">
+            <mat-label translate="STUDY_AVERAGE" class="col-6"></mat-label>
+            <mat-form-field class="col-2">
+                <input matInput formControlName="value" />
+            </mat-form-field>
+
+            <mat-form-field class="col-2">
+                <input matInput formControlName="calculatedPoints" readonly />
+            </mat-form-field>
+        </div>
+        <!--  </STUDY_AVERAGE?    -->
+
+        <!--BREAK_RULES-->
+        <div class="form-row mb-3">
+            <mat-label translate="BREAK_RULES" class="col-6"></mat-label>
+            <div>
+                <mat-radio-group
+                    formControlName="breachOfOrder"
+                    (change)="onCheckboxChange($event)"
+                    name="breachOfOrder"
+                >
+                    <mat-radio-button [value]="true" class="mr-3">Yes</mat-radio-button>
+                    <mat-radio-button [value]="false">No</mat-radio-button>
+                </mat-radio-group>
+                <span class="col-1 mb-2">50</span>
+            </div>
+        </div>
+        <!--  </BREAK_RULES> --->
+
+        <!--      <ZTP> -->
+        <div class="form-row mb-3" formGroupName="ztp">
+            <mat-label translate="ZTP" class="col-6"></mat-label>
+            <div>
+                <div>
+                    <mat-radio-group formControlName="value" (change)="onCheckboxChange($event)" name="ztp">
+                        <mat-radio-button [value]="true" class="mr-3">Yes</mat-radio-button>
+                        <mat-radio-button [value]="false">No</mat-radio-button>
+                    </mat-radio-group>
+                    <span class="col-1 mb-2" *ngIf="isRadioSelected('ztp')">50</span>
+                </div>
+
+                <app-attachement
+                    [group]="controls.ztp.get('attachments')"
+                    *ngIf="isRadioSelected('ztp')"
+                ></app-attachement>
+            </div>
+        </div>
+        <!--     </ZTP> -->
+
+        <div class="row justify-content-between">
+            <button mat-raised-button matStepperPrevious color="warn" type="button" translate="BACK_BUTTON"></button>
+            <button
+                mat-raised-button
+                matStepperNext
+                color="primary"
+                type="button"
+                translate="NEXT_BUTTON"
+                (click)="addNewItem()"
+            ></button>
+        </div>
+
+        <div>total points: {{ totalPoints }}</div>
+    </mat-card-content>
+</form>

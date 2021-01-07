@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ubytovanie-1eca4": {
+      "hosting": {
+        "Ubytovanie": [
+          "ubytovanie-1eca4"
+        ]
+      }
+    }
+  }
+}

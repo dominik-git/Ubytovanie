@@ -1,0 +1,41 @@
+{
+  "FULL_NAME":"Plné meno",
+  "GENDER": "Pohlavie",
+   "ADDRESS": "Trvalé bydlisko",
+  "NATIONALITY": "Štátna príslušnosť",
+  "STUDY_FORM": "Forma štúdia",
+  "STUDY_PROGRAMME": "Študijný program",
+  "TYPE_OF_STUDY": "Druh štúdia",
+  "YEAR_OF_STUDY": "Ročník štúdia",
+  "FACULTY": "Fakulta",
+  "PERSONAL_FORM_CHECKBOX": "Potvrdzujem správnosť osobných údajov",
+  "DORMITORY": "Internát / ubytovňa",
+  "DORMITORY_NOTICE": "Poznámka k žiadosti",
+  "DISTANCE": "vzdialenosť Košice - miesto trvalého bydliska v km",
+  "COUNT_OF_STOPS": "počet nevyhnutných cestovných prestupov",
+  "ORPHAN": "študent - sirota",
+  "HALF_ORPHAN": "študent - polosirota",
+  "SIR_MEMBERSHIP": "členstvo v ŠIR",
+  "AS_MEMBERSHIP": "členstvo v AS",
+  "UPJS_ACTIVITIES": "preukázanie aktivity v prospech UPJŠ (nutné dokladovať príslušným dokumentom, dokladom)",
+  "STUDY_AVERAGE": "študijný priemer žiadateľa (3 mínus vážený študijný priemer žiadateľa)",
+  "BREAK_RULES": "písomné napomenutie za porušenie domového a ubytovacieho poriadku",
+  "ZTP": "ťažko zdravotne postihnutí (ZŤP)",
+  "TOTAL_POINTS": "Celkový počet bodov",
+  "STEP_1_TITLE": "Osobne Udaje",
+  "STEP_2_TITLE": "Ubytovanie",
+  "STEP_3_TITLE": "Body",
+  "STEP_4_TITLE": "Dokoncenie",
+  "STEP_1_DESCRIPTION": "Skontrolujte a potom potvrďte správnosť osobných údajov. V prípade, že tieto údaje nezodpovedajú skutočnosti, kontaktujte študijné oddelenie.",
+  "STEP_2_DESCRIPTION": "Vyberte internát z ponuky.",
+  "STEP_3_DESCRIPTION": "Vyplňte jednotlivé bodové kritéria. Pre hodnotové kritérium zadajte príslušné číslo, pre ostatné kritéria vyberte Áno/Nie.",
+  "STEP_4_DESCRIPTION": "Skontrolujte údaje žiadosti a žiadosť uložte.",
+  "BACK_BUTTON": "Spat",
+  "NEXT_BUTTON": "Dalej",
+  "SAVE_BUTTON": "Ulozit"
+
+
+
+
+
+}
