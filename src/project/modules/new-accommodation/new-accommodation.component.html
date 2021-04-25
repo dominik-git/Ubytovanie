@@ -1,0 +1,132 @@
+<div *ngIf="!isSpinnerVisible" class="d-flex justify-content-center">
+    <ng-template #stepOne>
+        <ng-template matStepLabel>Osobné údaje</ng-template>
+        <app-personal-info-form [form]="masterForm[0]"></app-personal-info-form>
+    </ng-template>
+
+    <ng-template #stepTwo>
+        <ng-template matStepLabel>Ubytovanie</ng-template>
+        <app-accommodation-form [form]="masterForm[1]"></app-accommodation-form>
+    </ng-template>
+
+    <ng-template #stepThree>
+        <ng-template matStepLabel>Body</ng-template>
+        <app-points-form [form]="masterForm[2]" (newItemEvent)="onLastStepChange($event)"></app-points-form>
+    </ng-template>
+
+    <ng-template #stepFour>
+        <ng-template matStepLabel>Dokoncenie</ng-template>
+        <app-finish-form
+            [form]="masterForm[2]"
+            [masterForm]="masterForm"
+            *ngIf="activeStepIndex == 3"
+        ></app-finish-form>
+    </ng-template>
+
+    <ng-template [ngIf]="isSmallScreen" [ngIfElse]="bigScreen">
+        <mat-vertical-stepper [linear]="true" #stepper (selectionChange)="onStepChange($event)" class="container">
+            <mat-step [stepControl]="masterForm[0]" state="personal">
+                <ng-container *ngTemplateOutlet="stepOne"></ng-container>
+                <div>
+                    <button mat-button matStepperNext mat-raised-button color="primary" type="button">Ďalej</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="masterForm[1]" state="home">
+                <ng-container *ngTemplateOutlet="stepTwo"></ng-container>
+                <div class="d-flex justify-content-between mt-2">
+                    <button mat-button matStepperPrevious mat-raised-button color="primary" type="button">Späť</button>
+                    <button mat-button matStepperNext mat-raised-button color="primary" type="button">Ďalej</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="masterForm[2]" state="collections">
+                <ng-container *ngTemplateOutlet="stepThree"></ng-container>
+                <div class="d-flex justify-content-between mt-2">
+                    <button mat-button matStepperPrevious mat-raised-button color="primary" type="button">Späť</button>
+                    <button mat-button matStepperNext mat-raised-button color="primary" type="button">Ďalej</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="masterForm[2]" state="save">
+                <ng-container *ngTemplateOutlet="stepFour"></ng-container>
+                <div class="d-flex justify-content-between mt-2">
+                    <button mat-button matStepperPrevious mat-raised-button color="primary" type="button">Späť</button>
+                    <button
+                        mat-button
+                        matStepperNext
+                        mat-raised-button
+                        color="primary"
+                        type="button"
+                        (click)="submitForm()"
+                    >
+                        Odoslat
+                    </button>
+                </div>
+            </mat-step>
+            <ng-template matStepperIcon="personal">
+                <mat-icon>person_pin</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="home">
+                <mat-icon>hotel icon</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="collections">
+                <mat-icon>edit icon</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="save">
+                <mat-icon>save icon</mat-icon>
+            </ng-template>
+        </mat-vertical-stepper>
+    </ng-template>
+
+    <ng-template #bigScreen>
+        <mat-horizontal-stepper linear #stepper (selectionChange)="onStepChange($event)" class="container">
+            <mat-step [stepControl]="masterForm[0]" state="personal">
+                <ng-container *ngTemplateOutlet="stepOne"></ng-container>
+                <div>
+                    <button mat-button matStepperNext mat-raised-button color="primary" type="button">Ďalej</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="masterForm[1]" state="home">
+                <ng-container *ngTemplateOutlet="stepTwo"></ng-container>
+                <div class="d-flex justify-content-between mt-2">
+                    <button mat-button matStepperPrevious mat-raised-button color="primary" type="button">Späť</button>
+                    <button mat-button matStepperNext mat-raised-button color="primary" type="button">Ďalej</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="masterForm[2]" state="collections">
+                <ng-container *ngTemplateOutlet="stepThree"></ng-container>
+                <div class="d-flex justify-content-between mt-2">
+                    <button mat-button matStepperPrevious mat-raised-button color="primary" type="button">Späť</button>
+                    <button mat-button matStepperNext mat-raised-button color="primary" type="button">Ďalej</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="masterForm[2]" state="save">
+                <ng-container *ngTemplateOutlet="stepFour"></ng-container>
+                <div class="d-flex justify-content-between mt-2">
+                    <button mat-button matStepperPrevious mat-raised-button color="primary" type="button">Späť</button>
+                    <button
+                        mat-button
+                        matStepperNext
+                        mat-raised-button
+                        color="primary"
+                        type="button"
+                        (click)="submitForm()"
+                    >
+                        Odoslat
+                    </button>
+                </div>
+            </mat-step>
+            <ng-template matStepperIcon="personal">
+                <mat-icon>person_pin</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="home">
+                <mat-icon>hotel icon</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="collections">
+                <mat-icon>edit icon</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="save">
+                <mat-icon>save icon</mat-icon>
+            </ng-template>
+        </mat-horizontal-stepper>
+    </ng-template>
+</div>
+<app-spinner [visible]="isSpinnerVisible" [delay]="500"></app-spinner>

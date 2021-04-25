@@ -1,0 +1,25 @@
+
+.point-row{
+  height: 80px;
+  border-bottom: 1px solid #A8A8A8;
+  span{
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+.field-description{
+  color: #0069C8;
+}
+
+.field-value{
+  color: #A8A8A8;
+
+}
+
+.field-points{
+  color: #707070;
+  background: #E8E8E8;
+  width: 50px;
+  justify-content: center;
+}

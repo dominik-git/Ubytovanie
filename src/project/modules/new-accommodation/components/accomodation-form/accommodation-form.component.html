@@ -1,0 +1,32 @@
+<form [formGroup]="form" class="mt-4">
+    <mat-card-content>
+        <div class="row">
+            <span  class="col-12 col-sm-4">Internát / ubytovňa/</span>
+            <mat-form-field class="col-12 col-sm-6">
+                <mat-select placeholder="Internát" [formControl]="controls.internat">
+                    <mat-option *ngFor="let dormitory of dormitories" [value]="dormitory.kod"
+                        >{{ dormitory.kod }} - {{ dormitory.nazov }}</mat-option
+                    >
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <span class="col-12 col-sm-4">Poznámka k žiadosti</span>
+            <mat-form-field class="col-12 col-sm-6">
+                <textarea
+                    [formControl]="controls.poznamka"
+                    matInput
+                    rows="5"
+                    cols="40"
+                    placeholder="text"
+                ></textarea>
+            </mat-form-field>
+        </div>
+
+<!--        <div class="row justify-content-between">-->
+<!--            <button mat-raised-button matStepperPrevious color="warn" type="button" translate="BACK_BUTTON"></button>-->
+<!--            <button mat-raised-button matStepperNext color="primary" type="button" translate="NEXT_BUTTON"></button>-->
+<!--        </div>-->
+    </mat-card-content>
+</form>

@@ -1,0 +1,9 @@
+<div class="mb-2 attachment-container" *ngFor="let formControl of controlsArray?.controls; index as index" >
+
+<div class="d-flex align-items-center" *ngIf="hasControlValue(formControl)">
+  <span>{{getFileName(formControl)}}</span>
+  <button mat-icon-button color="primary" class="ml-1 mr-1" (click)="download(formControl)">
+    <mat-icon>save_alt</mat-icon>
+  </button>
+</div>
+</div>

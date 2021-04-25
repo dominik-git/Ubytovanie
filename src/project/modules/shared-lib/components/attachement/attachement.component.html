@@ -1,0 +1,24 @@
+<div class="mb-2 attachment-container" *ngFor="let formControl of controlsArray?.controls; index as index" >
+    <div class="d-flex  align-content-center required"
+
+      [class.required]="hasRequiredField(formControl)"
+
+    >
+        <mat-form-field class="w-100">
+            <ngx-mat-file-input
+                #removableInput
+                [formControl]="formControl"
+                (change)="onFileChange($event)"
+                [disabled]="disabled"
+            ></ngx-mat-file-input>
+            <mat-icon matSuffix *ngIf="removableInput.empty">folder</mat-icon>
+        </mat-form-field>
+
+        <button mat-icon-button color="primary" class="ml-1 mr-1" (click)="removeAttachement(index)" *ngIf="!removableInput.empty && !disabled">
+            <mat-icon>delete</mat-icon>
+        </button>
+      <button mat-icon-button color="primary" class="ml-1 mr-1" (click)="download(formControl)" *ngIf="!removableInput.empty">
+        <mat-icon>save_alt</mat-icon>
+      </button>
+    </div>
+</div>

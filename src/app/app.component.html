@@ -1,9 +1,1 @@
-<div class="main-container">
-  <button (click)="useLanguage('en')">en</button>
-  <button (click)="useLanguage('sk')">sk</button>
-  <app-multi-step-form
-    class="multi-step-form"
-    [formContent]="formContent"
-    (formSubmit)="onFormSubmit($event)"
-  ></app-multi-step-form>
-</div>
+<router-outlet></router-outlet>

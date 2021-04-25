@@ -1,0 +1,8 @@
+.attachment-container {
+  //max-width: 100px;
+}
+
+.required:before {
+  content:" *";
+  color: red;
+}

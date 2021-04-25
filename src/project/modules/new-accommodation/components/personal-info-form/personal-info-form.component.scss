@@ -1,0 +1,21 @@
+
+.confirm-checkbox{
+  padding-left: 15px;
+  min-height: 60px;
+  align-items: center;
+}
+
+
+.info-row{
+  min-height: 60px;
+  border-bottom: 1px solid var(--border-grey);
+  align-items: center;
+  :nth-child(1){
+    color: var(--blue);
+  }
+  :nth-child(2){
+    color: var(--grey);
+  }
+}
+
+

@@ -1,0 +1,104 @@
+<form [formGroup]="form" class="example-form mt-4" *ngIf="!isLoading">
+    <div class="row">
+        <span class="offset-11 col-1 d-flex justify-content-center">BODY</span>
+    </div>
+    <mat-card-content>
+        <ng-container formArrayName="bodyKriteria">
+            <ng-container *ngFor="let control of controls; let j = index" [formGroupName]="j">
+                <ng-container *ngIf="!controlContainsCheckBox(control)">
+                    <div
+                        *ngTemplateOutlet="
+                            radioTemplate;
+                            context: {
+                                point: getRequestPoint(control),
+                                controls: control
+                            }
+                        "
+                    ></div>
+                </ng-container>
+                <ng-container *ngIf="controlContainsCheckBox(control)">
+                    <div
+                        *ngTemplateOutlet="
+                            radioTemplate2;
+                            context: {
+                                point: getRequestPoint(control),
+                                controls: control
+                            }
+                        "
+                    ></div>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+
+        <ng-template let-criteriaPoint="point" let-groupControls="controls" #radioTemplate>
+            <div class="row point-row">
+                <div class="d-flex flex-md-row flex-column col-10 col-md-11">
+                    <span class="d-flex col-md-7 col-lg-8 field-description align-items-md-center mt-3 mb-3">{{
+                        criteriaPoint.nazov
+                    }}</span>
+
+                    <div class="col-md-4 col-lg-4 field-value">
+                        <div class="d-flex flex-column input-max-with">
+                            <mat-form-field>
+                                <input
+                                    matInput
+                                    [formControl]="groupControls.controls.hodnota"
+                                    (change)="onInputChange($event, groupControls, criteriaPoint)"
+                                />
+                            </mat-form-field>
+
+                            <app-attachement
+                                [controlsArray]="groupControls.controls.prilohy"
+                                [criteriaPoint]="criteriaPoint"
+                                *ngIf="isAttachmentVisible(criteriaPoint)"
+                            ></app-attachement>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 col-md-1 field-points">
+                    <span>{{ groupControls.controls.suma.value }}</span>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template let-criteriaPoint="point" let-groupControls="controls" #radioTemplate2>
+            <div class="row point-row">
+                <div class="d-flex flex-md-row flex-column col-10 col-md-11">
+                    <span class="d-flex col-md-7 col-lg-8 field-description d-flex align-items-center mt-3 mb-3">{{
+                        criteriaPoint.nazov
+                    }}</span>
+                    <div class="col-md-4 col-lg-4 d-flex align-items-center mt-4">
+                        <div class="d-flex flex-column input-max-with w-100">
+                            <mat-radio-group
+                                aria-label="Select an option"
+                                (change)="onRadioInputChange($event, groupControls, criteriaPoint)"
+                                [formControl]="groupControls.controls.checkboxHodnota"
+                                class="d-flex justify-content-between "
+                            >
+                                <mat-radio-button [value]="true" class="mr-2">Ano</mat-radio-button>
+                                <mat-radio-button [value]="false">Nie</mat-radio-button>
+                            </mat-radio-group>
+
+                            <app-attachement
+                                class="field-value"
+                                [controlsArray]="groupControls.controls.prilohy"
+                                [criteriaPoint]="criteriaPoint"
+                                *ngIf="groupControls.controls.checkboxHodnota.value"
+                            ></app-attachement>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2 col-md-1 field-points">
+                    <span>{{ groupControls.controls.suma.value }}</span>
+                </div>
+            </div>
+        </ng-template>
+
+        <div class="row sum-row">
+            <div class="offset-10 col-2 offset-md-11 col-md-1 d-flex justify-content-center field-points">
+                {{ totalPoints }}
+            </div>
+        </div>
+    </mat-card-content>
+</form>

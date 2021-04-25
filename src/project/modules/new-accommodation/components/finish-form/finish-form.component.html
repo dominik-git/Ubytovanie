@@ -1,0 +1,94 @@
+<div class="mt-4">
+    <div class="row">
+        <span class="offset-11 col-1 d-flex justify-content-center">BODY</span>
+    </div>
+    <mat-card-content>
+        <ng-container>
+            <ng-container *ngFor="let control of controls; let j = index">
+                <ng-container *ngIf="!controlContainsCheckBox(control)">
+                    <div
+                        *ngTemplateOutlet="
+                            radioTemplate;
+                            context: {
+                                point: getRequestPoint(control),
+                                controls: control
+                            }
+                        "
+                    ></div>
+                </ng-container>
+                <ng-container *ngIf="controlContainsCheckBox(control)">
+                    <div
+                        *ngTemplateOutlet="
+                            radioTemplate2;
+                            context: {
+                                point: getRequestPoint(control),
+                                controls: control
+                            }
+                        "
+                    ></div>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+      <div class="row sum-row">
+        <div class="offset-10 col-2 offset-md-11 col-md-1 d-flex justify-content-center field-points">
+          {{ form.controls.body.value }}
+        </div>
+      </div>
+    </mat-card-content>
+</div>
+
+<ng-template let-requestPoint="point" let-groupControls="controls" #radioTemplate>
+    <div class="row point-row">
+        <div class="d-flex flex-md-row flex-column col-10 col-md-11">
+            <span class="d-flex col-md-7 col-lg-8 field-description align-items-md-center mt-3 mb-3">{{
+                requestPoint.nazov
+            }}</span>
+            <div class="d-flex  align-items-center col-md-4 col-lg-2 offset-lg-2 field-value">
+                <div class="flex-column input-max-with">
+                    <span> {{ groupControls.controls.hodnota.value }}</span>
+                    <app-attachment-present [controlsArray]="groupControls.controls.prilohy"> </app-attachment-present>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center col-2 col-md-1 field-points">
+            {{ groupControls.controls.suma.value }}
+        </div>
+    </div>
+</ng-template>
+
+<ng-template let-criteriaPoint="point" let-groupControls="controls" #radioTemplate2>
+    <div class="row point-row">
+        <div class="d-flex flex-md-row flex-column col-10 col-md-11">
+            <span class="d-flex col-md-7 col-lg-8 field-description d-flex align-items-center mt-3 mb-3">{{
+                criteriaPoint.nazov
+            }}</span>
+            <div class="col-md-4 col-lg-2 offset-lg-2 d-flex align-items-center mt-4">
+                <div class="d-flex flex-column input-max-with w-100">
+                    <mat-radio-group class="d-flex justify-content-between">
+                        <mat-radio-button
+                            [value]="true"
+                            class="mr-2"
+                            disabled="true"
+                            [checked]="groupControls.controls.checkboxHodnota.value"
+                            >Ano</mat-radio-button
+                        >
+                        <mat-radio-button
+                            [value]="false"
+                            disabled="true"
+                            [checked]="!groupControls.controls.checkboxHodnota.value"
+                            >No</mat-radio-button
+                        >
+                    </mat-radio-group>
+                    <app-attachment-present [controlsArray]="groupControls.controls.prilohy" class="field-value">
+                    </app-attachment-present>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center col-2 col-md-1 field-points">
+            {{ groupControls.controls.suma.value }}
+        </div>
+    </div>
+</ng-template>
+
